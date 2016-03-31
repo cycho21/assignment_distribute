@@ -5,12 +5,18 @@ var bodyparser = require('body-parser');
 var kafka_home = "/opt/kakfa_2.11-0.9.0.1/";
 var kafka = require('./kafkaModule.js');
 
+var Canvas = require('canvas')
+  , Image = Canvas.Image
+  , canvas = new Canvas(200, 200)
+  , ctx = canvas.getContext('2d');
+
 require('shelljs/global');
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
 
 
 app.listen(3030, function(){
+	console.log("server start");
 });
 
 app.use('/htmls', express.static(__dirname + '/htmls'));
@@ -50,7 +56,8 @@ app.route('/sendMessage')
 app.route('/')
 	.get(function(req, res) {
 	console.log(" '/' get!");
-	res.redirect("/htmls/index2.html");
+	res.redirect("/htmls/index4.html");
 });
 
 var lsExec = function() {exec('hadoop fs -ls /', {async:false});}
+
