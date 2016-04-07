@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#button1").click(function(){
+        $.post("/execute")
+	});
+	
+    $("#button2").click(function(){
+	$.post("/kafka")
+	});
+
+	$("#button4").click(function(){
+		$.post("/listTopic")
+	});
+});
+
+</script>
+</head>
+<body>
+
+<button id="button1">zookeeper Start!</button><br>
+<button id="button2">Kafka Start!</button><br>
+<form action="/createTopic" id="topicName" method="POST">
+	<input type="text" name="topicName"/>
+	<input type="submit" value="Kafka createTopic!"/>
+</form>
+<button id="button4">Kafka listTopic!</button><br>
+<form action="/sendMessage" method="POST">
+	<input type="text" name="topicName"/>
+	<input type="text" name="message"/>
+	<input type="submit" value="Kafka sendMessage Test!"/>
+</form>
+<form action="/readMessage" method="POST">
+	<input type="text" name="topicName"/>
+	<input type="submit" value="Consume message form Kafka"/>
+</form>
+</body>
+</html>
+
